@@ -6,3 +6,7 @@ then
 else
 	echo "Employee is Absent."
 fi
+wagePerhour=20
+fullDayhour=8
+dailyEmpWage=$((wagePerhour*fullDayhour))
+echo "Daily Employee Wage is $dailyEmpWage"
