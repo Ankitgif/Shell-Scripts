@@ -41,7 +41,12 @@ wageTillworkingdays()
 	done
 	echo "Wages till total working days is reached for a month is $wagesFormonth."
 }
-echo "Enter choice to do operation 1.Check Attendance 2.Calculate daily employee wage 3.Calculate Part time employee wage 4.Calculating Wages for a month 5.Calculate wages till total working days for a month"
+getWorkhour()
+{
+	workHour=$(($1/$2))
+	echo "Working hour for an employee is $workHour hour a day"
+}
+echo "Enter choice to do operation 1.Check Attendance 2.Calculate daily employee wage 3.Calculate Part time employee wage 4.Calculating Wages for a month 5.Calculate wages till total working days for a month 6.Get work hour"
 read num
 choice=$num
 case $choice in
@@ -54,6 +59,9 @@ case $choice in
 4) wagesForaMonth 
    ;;
 5) wageTillworkingdays
+   ;;
+6) dailyEmpwage=160
+   getWorkhour $dailyEmpwage $WAGEPERHOUR
    ;;
 *)
   echo "Please provide valid choice"
