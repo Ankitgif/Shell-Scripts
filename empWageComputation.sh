@@ -46,7 +46,18 @@ getWorkhour()
 	workHour=$(($1/$2))
 	echo "Working hour for an employee is $workHour hour a day"
 }
-echo "Enter choice to do operation 1.Check Attendance 2.Calculate daily employee wage 3.Calculate Part time employee wage 4.Calculating Wages for a month 5.Calculate wages till total working days for a month 6.Get work hour"
+dailyandtotalWage()
+{
+	for (( day=1;day<=$1;day++ ))
+	do
+		dailyEmpWage=$((WAGEPERHOUR*FULLDAYHOUR))
+		echo "Day $day wage is $dailyEmpWage"
+	done
+	totalWage=$((dailyEmpWage*$1))
+	echo "Total wage of an employee for a month is $totalWage"
+
+}
+echo "Enter choice to do operation 1.Check Attendance 2.Calculate daily employee wage 3.Calculate Part time employee wage 4.Calculating Wages for a month 5.Calculate wages till total working days for a month 6.Get work hour 7.Storing daily and total wage"
 read num
 choice=$num
 case $choice in
@@ -62,6 +73,9 @@ case $choice in
    ;;
 6) dailyEmpwage=160
    getWorkhour $dailyEmpwage $WAGEPERHOUR
+   ;;
+7) workingdayPermonth=20
+   dailyandtotalWage $workingdayPermonth
    ;;
 *)
   echo "Please provide valid choice"
