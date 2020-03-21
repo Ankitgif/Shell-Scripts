@@ -10,10 +10,12 @@ attendanceCheck()
 	fi
 }
 WAGEPERHOUR=20
-dailyEmployeewage()
+FULLDAYHOUR=8
+dailyEmployeewage() 
+
 {
 	fullDayhour=8
-	dailyEmpWage=$((WAGEPERHOUR*fullDayhour))
+	dailyEmpWage=$((WAGEPERHOUR*FULLDAYHOUR))
 	echo "Daily Employee Wage is $dailyEmpWage"
 }
 partTimeemployeewage()
@@ -22,7 +24,15 @@ partTimeemployeewage()
 	partTimeEmpWage=$((WAGEPERHOUR*partTimehour))
 	echo "Part time employee wage is $partTimeEmpWage"
 }
-echo "Enter choice to do operation 1.Check Attendance 2.Calculate daily employee wage 3.Calculate Part time employee wage"
+wagesForaMonth()
+{
+	dailyEmpWage=$((WAGEPERHOUR*FULLDAYHOUR))
+	workingDayperMonth=20
+	wageForMonth=$((workingDayperMonth*dailyEmpWage))
+	echo "Wages for a month is $wageForMonth"
+}
+
+echo "Enter choice to do operation 1.Check Attendance 2.Calculate daily employee wage 3.Calculate Part time employee wage 4.Calculating Wages for a month"
 read num
 choice=$num
 case $choice in
@@ -31,6 +41,8 @@ case $choice in
 2) dailyEmployeewage
    ;;
 3) partTimeemployeewage
+   ;;
+4) wagesForaMonth 
    ;;
 *)
   echo "Please provide valid choice"
