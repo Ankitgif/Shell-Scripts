@@ -16,23 +16,32 @@ dailyEmployeewage()
 {
 	fullDayhour=8
 	dailyEmpWage=$((WAGEPERHOUR*FULLDAYHOUR))
-	echo "Daily Employee Wage is $dailyEmpWage"
+	echo "Daily Employee Wage is $dailyEmpWage."
 }
 partTimeemployeewage()
 {
 	partTimehour=4
 	partTimeEmpWage=$((WAGEPERHOUR*partTimehour))
-	echo "Part time employee wage is $partTimeEmpWage"
+	echo "Part time employee wage is $partTimeEmpWage."
 }
 wagesForaMonth()
 {
 	dailyEmpWage=$((WAGEPERHOUR*FULLDAYHOUR))
 	workingDayperMonth=20
 	wageForMonth=$((workingDayperMonth*dailyEmpWage))
-	echo "Wages for a month is $wageForMonth"
+	echo "Wages for a month is $wageForMonth."
 }
-
-echo "Enter choice to do operation 1.Check Attendance 2.Calculate daily employee wage 3.Calculate Part time employee wage 4.Calculating Wages for a month"
+wageTillworkingdays()
+{
+	wagesFormonth=0
+	dailyEmpWage=$((WAGEPERHOUR*FULLDAYHOUR))
+	for (( day=1;day<=20;day++ ))
+	do
+		wagesFormonth=$(($dailyEmpWage*$day))
+	done
+	echo "Wages till total working days is reached for a month is $wagesFormonth."
+}
+echo "Enter choice to do operation 1.Check Attendance 2.Calculate daily employee wage 3.Calculate Part time employee wage 4.Calculating Wages for a month 5.Calculate wages till total working days for a month"
 read num
 choice=$num
 case $choice in
@@ -43,6 +52,8 @@ case $choice in
 3) partTimeemployeewage
    ;;
 4) wagesForaMonth 
+   ;;
+5) wageTillworkingdays
    ;;
 *)
   echo "Please provide valid choice"
